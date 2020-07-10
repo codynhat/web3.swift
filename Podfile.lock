@@ -9,7 +9,7 @@ DEPENDENCIES:
   - secp256k1.swift (~> 0.1)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - BigInt
     - GenericJSON
     - secp256k1.swift
@@ -21,4 +21,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3d84a95ae54221cea1e840cd6b62e55c04ed01a3
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.5

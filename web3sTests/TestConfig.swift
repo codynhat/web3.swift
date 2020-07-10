@@ -26,4 +26,7 @@ struct TestConfig {
     
     // ERC165 compliant contract
     static let erc165Contract = "0x5c007a1d8051dfda60b3692008b9e10731b67fde"
+	
+	// ERC1155 compliant contract
+    static let erc1155Contract = "0x3bd12e260F11BD46CA780BF8Cb3715DD38f0D56c"
 }
