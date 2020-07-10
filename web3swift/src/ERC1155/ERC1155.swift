@@ -9,7 +9,7 @@ import Foundation
 import BigInt
 
 public class ERC1155 {
-	let client: EthereumClient
+	public let client: EthereumClient
 	
 	public init(client: EthereumClient) {
         self.client = client
