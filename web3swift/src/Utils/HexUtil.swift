@@ -13,7 +13,7 @@ enum HexConversionError: Error {
     case stringNotEven
 }
 
-public class HexUtil {
+class HexUtil {
     
     private static func convert(hexDigit digit: UnicodeScalar) throws -> UInt8 {
         switch digit {
@@ -32,7 +32,7 @@ public class HexUtil {
         }
     }
     
-    public static func byteArray(fromHex string: String) throws -> [UInt8] {
+	static func byteArray(fromHex string: String) throws -> [UInt8] {
         var iterator = string.unicodeScalars.makeIterator()
         var byteArray: [UInt8] = []
         

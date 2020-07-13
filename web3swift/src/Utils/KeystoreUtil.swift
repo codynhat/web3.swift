@@ -20,11 +20,11 @@ enum KeystoreUtilError: Error {
     case unknown
 }
 
-class KeystoreUtil: KeystoreUtilProtocol {
+public class KeystoreUtil: KeystoreUtilProtocol {
     private static let dklen = 32
     private static let dkround = 262144
     
-    static func encode(privateKey: Data, password: String) throws -> Data {
+    public static func encode(privateKey: Data, password: String) throws -> Data {
         guard let salt = Data.randomOfLength(16) else {
             throw KeystoreUtilError.unknown
         }
@@ -36,7 +36,7 @@ class KeystoreUtil: KeystoreUtilProtocol {
         return try encode(privateKey: privateKey, password: password, salt: salt, iv: iv)
     }
     
-    static func encode(privateKey: Data, password: String, salt: Data, iv: Data) throws -> Data {
+    public static func encode(privateKey: Data, password: String, salt: Data, iv: Data) throws -> Data {
         
         // derive address from private key
         let publicKeyData = try KeyUtil.generatePublicKey(from: privateKey)
@@ -77,7 +77,7 @@ class KeystoreUtil: KeystoreUtilProtocol {
         return data
     }
     
-    static func decode(data: Data, password: String) throws -> Data {
+    public static func decode(data: Data, password: String) throws -> Data {
         
         // decode json string
         guard let keystore = try? JSONDecoder().decode(KeystoreFile.self, from: data) else {
