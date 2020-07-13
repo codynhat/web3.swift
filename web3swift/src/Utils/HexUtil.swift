@@ -13,7 +13,7 @@ enum HexConversionError: Error {
     case stringNotEven
 }
 
-class HexUtil {
+public class HexUtil {
     
     private static func convert(hexDigit digit: UnicodeScalar) throws -> UInt8 {
         switch digit {
