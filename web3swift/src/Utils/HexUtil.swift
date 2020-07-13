@@ -32,7 +32,7 @@ public class HexUtil {
         }
     }
     
-    static func byteArray(fromHex string: String) throws -> [UInt8] {
+    public static func byteArray(fromHex string: String) throws -> [UInt8] {
         var iterator = string.unicodeScalars.makeIterator()
         var byteArray: [UInt8] = []
         
