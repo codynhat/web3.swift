@@ -38,4 +38,21 @@ public class ERC1155 {
             
         }
     }
+	
+	public func allTransferBatchEvents(tokenContract: EthereumAddress, fromBlock: EthereumBlock, toBlock: EthereumBlock, completion: @escaping((Error?, [ERC1155Events.TransferBatch]?) -> Void)) {
+        
+		self.client.getEvents(addresses: [ tokenContract.value ],
+                              topics: nil,
+                              fromBlock: fromBlock,
+                              toBlock: toBlock,
+                              eventTypes: [ERC1155Events.TransferBatch.self]) { (error, events, unprocessedLogs) in
+            
+            if let events = events as? [ERC1155Events.TransferBatch] {
+                return completion(error, events)
+            } else {
+                return completion(error ?? EthereumClientError.decodeIssue, nil)
+            }
+            
+        }
+    }
 }
