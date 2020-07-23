@@ -22,6 +22,12 @@ public class ERC1155 {
         }
     }
 	
+	public func safeTransferFrom(tokenContract: EthereumAddress, withAccount account: EthereumAccount, from: EthereumAddress, to: EthereumAddress, tokenId: BigUInt, amount: BigUInt, completion: @escaping((Error?, String?) -> Void)) throws {
+		let function = ERC1155Functions.safeTransferFrom(contract: tokenContract, _from: from, _to: to, _id: tokenId, _amount: amount)
+		let transaction = try function.transaction()
+		self.client.eth_sendRawTransaction(transaction, withAccount: account, completion: completion)
+    }
+	
 	public func allTransferSingleEvents(tokenContract: EthereumAddress, fromBlock: EthereumBlock, toBlock: EthereumBlock, completion: @escaping((Error?, [ERC1155Events.TransferSingle]?) -> Void)) {
         
 		self.client.getEvents(addresses: [ tokenContract.value ],
