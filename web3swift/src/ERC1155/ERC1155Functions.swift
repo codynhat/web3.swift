@@ -50,6 +50,7 @@ public enum ERC1155Functions {
 		public let _to: EthereumAddress
 		public let _id: BigUInt
 		public let _amount: BigUInt
+		public let _data: Data
 		   
 		public init(contract: EthereumAddress,
 				   from: EthereumAddress? = nil,
@@ -58,7 +59,8 @@ public enum ERC1155Functions {
 				   _from: EthereumAddress,
 				   _to: EthereumAddress,
 				   _id: BigUInt,
-				   _amount: BigUInt) {
+				   _amount: BigUInt,
+				   _data: Data) {
 			self.contract = contract
 			self.from = from
 			self.gasPrice = gasPrice
@@ -67,6 +69,7 @@ public enum ERC1155Functions {
 			self._to = _to
 			self._id = _id
 			self._amount = _amount
+			self._data = _data
 		}
 
 		public func encode(to encoder: ABIFunctionEncoder) throws {
@@ -74,6 +77,7 @@ public enum ERC1155Functions {
 			try encoder.encode(_to)
 			try encoder.encode(_id)
 			try encoder.encode(_amount)
+			try encoder.encode(_data)
 		}
 	   }
 }
