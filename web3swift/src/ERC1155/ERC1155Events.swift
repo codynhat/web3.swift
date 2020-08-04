@@ -58,4 +58,24 @@ public enum ERC1155Events {
 			self.amounts = try data[1].decoded()
         }
     }
+	
+	public struct ApprovalForAll: ABIEvent {
+        public static let name = "ApprovalForAll"
+        public static let types: [ABIType.Type] = [ EthereumAddress.self , EthereumAddress.self , Bool.self]
+        public static let typesIndexed = [true, true, false]
+        public let log: EthereumLog
+		
+		public let _owner: EthereumAddress
+        public let _operator: EthereumAddress
+        public let _approved: Bool
+        
+        public init?(topics: [ABIType], data: [ABIType], log: EthereumLog) throws {
+            try ApprovalForAll.checkParameters(topics, data)
+            self.log = log
+            
+			self._owner = try topics[0].decoded()
+            self._operator = try topics[1].decoded()
+            self._approved = try topics[2].decoded()
+        }
+    }
 }
