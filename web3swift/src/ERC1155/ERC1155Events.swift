@@ -75,7 +75,8 @@ public enum ERC1155Events {
             
 			self._owner = try topics[0].decoded()
             self._operator = try topics[1].decoded()
-            self._approved = try topics[2].decoded()
+			
+            self._approved = try data[0].decoded()
         }
     }
 }
