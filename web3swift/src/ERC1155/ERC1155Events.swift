@@ -47,7 +47,7 @@ public enum ERC1155Events {
 		public let amounts: [BigUInt]
         
         public init?(topics: [ABIType], data: [ABIType], log: EthereumLog) throws {
-            try TransferSingle.checkParameters(topics, data)
+            try TransferBatch.checkParameters(topics, data)
             self.log = log
             
 			self._operator = try topics[0].decoded()
